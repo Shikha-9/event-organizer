@@ -26,7 +26,7 @@ app.post('/add-event', (req, res) => {
       res.send('Error saving event.');
     } else {
       console.log('Event added with ID:', this.lastID);
-      res.redirect('/'); // After adding, show all events
+      res.redirect('/');
     }
   });
 });
@@ -41,7 +41,15 @@ app.get('/', (req, res) => {
       res.send('Error loading events.');
     } else {
       const eventList = rows.map(event => {
-        return `<li><strong>${event.title}</strong> - ${event.date}<br>${event.description || ''}</li>`;
+        return `
+          <li>
+            <strong>${event.title}</strong> - ${event.date}<br>
+            ${event.description || ''}<br>
+            <form action="/delete-event/${event.id}" method="POST" style="display:inline;">
+              <button type="submit">🗑️ Delete</button>
+            </form>
+          </li>
+        `;
       }).join('');
 
       const htmlPath = path.join(__dirname, 'views', 'events.html');
@@ -57,7 +65,23 @@ app.get('/', (req, res) => {
   });
 });
 
-// Start the server
+// Route: Delete an Event
+app.post('/delete-event/:id', (req, res) => {
+  const eventId = req.params.id;
+
+  const query = `DELETE FROM events WHERE id = ?`;
+  db.run(query, [eventId], function (err) {
+    if (err) {
+      console.error('Error deleting event:', err.message);
+      res.send('Error deleting event.');
+    } else {
+      console.log(`Event with ID ${eventId} deleted.`);
+      res.redirect('/');
+    }
+  });
+});
+
+// Start server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
