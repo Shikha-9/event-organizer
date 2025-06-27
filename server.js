@@ -15,23 +15,30 @@ app.get('/add-event', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'add-event.html'));
 });
 
-// Route: Handle Form Submission
+// Route: Handle Event Submission with Validation
 app.post('/add-event', (req, res) => {
-  const { title, date, description } = req.body;
+  const { title, date, description, category } = req.body;
 
-  const query = `INSERT INTO events (title, date, description) VALUES (?, ?, ?)`;
-  db.run(query, [title, date, description], function (err) {
+  if (!title || !date) {
+    return res.send(`
+      <h2 style="color:red; font-family:sans-serif;">⚠️ Title and Date are required fields!</h2>
+      <a href="/add-event" style="color:blue; font-family:sans-serif;">Go Back</a>
+    `);
+  }
+
+  const query = `INSERT INTO events (title, date, description, category) VALUES (?, ?, ?, ?)`;
+  db.run(query, [title, date, description, category], function (err) {
     if (err) {
       console.error('Error inserting event:', err.message);
       res.send('Error saving event.');
     } else {
-      console.log('Event added with ID:', this.lastID);
+      console.log('✅ Event added with ID:', this.lastID);
       res.redirect('/');
     }
   });
 });
 
-// Route: Show All Events on Homepage
+// Route: Display All Events on Home Page
 app.get('/', (req, res) => {
   const query = `SELECT * FROM events ORDER BY date`;
 
@@ -43,9 +50,9 @@ app.get('/', (req, res) => {
       const eventList = rows.map(event => {
         return `
           <li>
-            <strong>${event.title}</strong> - ${event.date}<br>
+            <strong>${event.title}</strong> <em style="color:#6c757d">(${event.category || 'General'})</em> - ${event.date}<br>
             ${event.description || ''}<br>
-            <form action="/delete-event/${event.id}" method="POST" style="display:inline;">
+            <form action="/delete-event/${event.id}" method="POST" style="display:inline-block; margin-top: 8px;">
               <button type="submit">🗑️ Delete</button>
             </form>
           </li>
@@ -65,7 +72,7 @@ app.get('/', (req, res) => {
   });
 });
 
-// Route: Delete an Event
+// Route: Delete Event
 app.post('/delete-event/:id', (req, res) => {
   const eventId = req.params.id;
 
@@ -75,13 +82,13 @@ app.post('/delete-event/:id', (req, res) => {
       console.error('Error deleting event:', err.message);
       res.send('Error deleting event.');
     } else {
-      console.log(`Event with ID ${eventId} deleted.`);
+      console.log(`🗑️ Event with ID ${eventId} deleted.`);
       res.redirect('/');
     }
   });
 });
 
-// Start server
+// Start Server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`🎉 Server is running on http://localhost:${PORT}`);
 });

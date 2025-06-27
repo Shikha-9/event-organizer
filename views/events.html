@@ -6,10 +6,26 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <h1>Upcoming Events</h1>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="/hero.jpg" alt="Event Banner">
+    <div class="hero-text">
+      <h1>🎯 Plan, Promote & Party!</h1>
+      <p>Your personal event organizer — Add, View & Manage all your events easily!</p>
+      <a href="/add-event"><button>➕ Create Event</button></a>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <h1>📅 Upcoming Events</h1>
   <ul>
     {{eventList}}
   </ul>
-  <a href="/add-event">+ Add New Event</a>
+
+  <div style="text-align:center; margin-top: 30px;">
+    <a href="/add-event"><button>+ Add New Event</button></a>
+  </div>
+
 </body>
 </html>

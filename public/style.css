@@ -1,37 +1,45 @@
 body {
-  font-family: Arial, sans-serif;
-  max-width: 800px;
+  font-family: 'Segoe UI', sans-serif;
+  max-width: 900px;
   margin: 40px auto;
-  background-color: #f8f9fa;
+  background: linear-gradient(to right, #fdfbfb, #ebedee);
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
 }
 
 h1 {
-  color: #343a40;
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2em;
   border-bottom: 2px solid #ccc;
   padding-bottom: 10px;
 }
 
 form label {
   font-weight: bold;
+  display: block;
+  margin-top: 15px;
+  color: #555;
 }
 
-input, textarea, button {
+input, textarea, select, button {
   width: 100%;
   padding: 10px;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  border-radius: 5px;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  border-radius: 6px;
   border: 1px solid #ccc;
+  font-size: 1em;
 }
 
 button {
   background-color: #007bff;
   color: white;
   border: none;
-  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
 button:hover {
@@ -42,3 +50,88 @@ a {
   text-decoration: none;
   color: #007bff;
 }
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: white;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+li::before {
+  content: "📅";
+  position: absolute;
+  left: -35px;
+  top: 20px;
+  font-size: 1.5em;
+}
+
+form[action^="/delete-event"] button {
+  background-color: #dc3545;
+}
+
+form[action^="/delete-event"] button:hover {
+  background-color: #c82333;
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: brightness(0.7);
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+
+.hero-text h1 {
+  font-size: 2.5em;
+  margin: 0;
+}
+
+.hero-text p {
+  font-size: 1.1em;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.hero-text button {
+  background-color: #ffc107;
+  border: none;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.hero-text button:hover {
+  background-color: #e0a800;
+}
+
