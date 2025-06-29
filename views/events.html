@@ -19,6 +19,8 @@
     <div class="hero-text">
       <h1>🎯 Plan, Promote & Party!</h1>
       <p>Your personal event organizer — Add, View & Manage all your events easily!</p>
+      <a href="#events"><button>⬇️ View Events</button></a>
+
       <a href="/add-event"><button>➕ Create Event</button></a>
       <!-- 📁 My Events button -->
     </div>
@@ -50,10 +52,12 @@
   </form>
 
   <!-- 📅 Event List -->
-  <h1>📅 Upcoming Events</h1>
-  <ul>
-    {{eventList}}
-  </ul>
+ <h1 id="events">📅 Upcoming Events</h1>
+
+ <div class="event-list">
+  {{eventList}}
+</div>
+
 
   <!-- 🌙 Dark Mode Script -->
   <script>

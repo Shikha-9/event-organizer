@@ -39,7 +39,7 @@ app.get('/register', (req, res) => {
   fs.readFile(htmlPath, 'utf8', (err, html) => {
     if (err) return res.send('Error loading register page.');
     const flash = res.locals.flash
-      ? `<p class="${res.locals.flash.type}">${res.locals.flash.message}</p>` : '';
+      ? `<div class="toast ${res.locals.flash.type}">${res.locals.flash.message}</div>` : '';
     res.send(html.replace('{{flashMessage}}', flash));
   });
 });
@@ -72,7 +72,7 @@ app.get('/login', (req, res) => {
   fs.readFile(htmlPath, 'utf8', (err, html) => {
     if (err) return res.send('Error loading login page.');
     const flash = res.locals.flash
-      ? `<p class="${res.locals.flash.type}">${res.locals.flash.message}</p>` : '';
+      ? `<div class="toast ${res.locals.flash.type}">${res.locals.flash.message}</div>` : '';
     res.send(html.replace('{{flashMessage}}', flash));
   });
 });
@@ -104,7 +104,7 @@ app.get('/add-event', requireLogin, (req, res) => {
   fs.readFile(htmlPath, 'utf8', (err, html) => {
     if (err) return res.send('Error loading form.');
     const flash = res.locals.flash
-      ? `<p class="${res.locals.flash.type}">${res.locals.flash.message}</p>` : '';
+      ? `<div class="toast ${res.locals.flash.type}">${res.locals.flash.message}</div>` : '';
     res.send(html.replace('{{flashMessage}}', flash));
   });
 });
@@ -240,9 +240,10 @@ app.get('/', (req, res) => {
 // GET: Search Events
 app.get('/search', (req, res) => {
   const searchTerm = `%${req.query.query}%`;
-  const query = `SELECT * FROM events WHERE title LIKE ? OR category LIKE ? ORDER BY date`;
+  const categoryFilter = req.query.category || '%';
+  const query = `SELECT * FROM events WHERE (title LIKE ? OR category LIKE ?) AND category LIKE ? ORDER BY date`;
 
-  db.all(query, [searchTerm, searchTerm], (err, rows) => {
+  db.all(query, [searchTerm, searchTerm, categoryFilter], (err, rows) => {
     if (err) {
       console.error('Error during search:', err.message);
       return res.send('Error searching events.');
