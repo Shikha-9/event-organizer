@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Event Organizer</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <section class="login-container">
+    <h1>🔐 Admin Login</h1>
+    {{flashMessage}}
+
+    <form action="/login" method="POST">
+      <label>Username</label>
+      <input type="text" name="username" required>
+
+      <label>Password</label>
+      <input type="password" name="password" required>
+
+      <button type="submit">🔓 Login</button>
+    </form>
+
+    <p style="margin-top: 15px; text-align: center;">
+      Don't have an account? <a href="/register">Register here</a>
+    </p>
+  </section>
+</body>
+</html>

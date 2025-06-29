@@ -1,137 +1,277 @@
+/* ✅ Base Styles */
 body {
   font-family: 'Segoe UI', sans-serif;
-  max-width: 900px;
-  margin: 40px auto;
-  background: linear-gradient(to right, #fdfbfb, #ebedee);
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
-}
-
-h1 {
-  text-align: center;
+  background-color: #f2f4f8;
   color: #333;
-  margin-bottom: 30px;
-  font-size: 2em;
-  border-bottom: 2px solid #ccc;
-  padding-bottom: 10px;
-}
-
-form label {
-  font-weight: bold;
-  display: block;
-  margin-top: 15px;
-  color: #555;
-}
-
-input, textarea, select, button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 1em;
-}
-
-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-a {
-  text-decoration: none;
-  color: #007bff;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-ul {
-  list-style: none;
+  margin: 0;
   padding: 0;
+  line-height: 1.6;
 }
 
-li {
-  background-color: white;
-  border: 1px solid #ddd;
-  margin-bottom: 15px;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.05);
-  position: relative;
+/* ✅ Container for Forms & Sections */
+section, .content {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffffcc;
+  border-radius: 15px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
 }
 
-li::before {
-  content: "📅";
-  position: absolute;
-  left: -35px;
-  top: 20px;
-  font-size: 1.5em;
-}
-
-form[action^="/delete-event"] button {
-  background-color: #dc3545;
-}
-
-form[action^="/delete-event"] button:hover {
-  background-color: #c82333;
-}
+/* ✅ Hero Section */
 .hero {
   position: relative;
-  overflow: hidden;
-  border-radius: 10px;
+  text-align: center;
   margin-bottom: 30px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .hero img {
   width: 100%;
-  height: auto;
-  display: block;
-  filter: brightness(0.7);
+  border-radius: 15px;
+  object-fit: cover;
+  max-height: 300px;
 }
 
 .hero-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
+  margin-top: 20px;
 }
 
 .hero-text h1 {
-  font-size: 2.5em;
-  margin: 0;
+  font-size: 2.4rem;
+  color: #2a2a2a;
 }
 
 .hero-text p {
-  font-size: 1.1em;
-  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #666;
   margin-bottom: 20px;
 }
 
-.hero-text button {
-  background-color: #ffc107;
+/* ✅ Headings */
+h1 {
+  color: #2a2a2a;
+  margin-bottom: 15px;
+}
+
+/* ✅ Forms */
+form label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+  color: #444;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+/* ✅ Buttons */
+button {
+  background-color: #0066ff;
+  color: white;
+  padding: 10px 16px;
   border: none;
-  color: #333;
-  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background-color: #0052cc;
+}
+
+/* ✅ Event List */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  background: #ffffff;
+  margin-bottom: 15px;
+  padding: 15px 20px;
+  border-left: 5px solid #0066ff;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+}
+
+/* ✅ Top Bar with Logout & Dark Mode */
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  max-width: 800px;
+  margin: 20px auto 0;
+  padding: 0 30px;
+}
+
+.logout-button {
+  color: #fff;
+  background: #dc3545;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.logout-button:hover {
+  background: #c82333;
+}
+
+.dark-toggle {
+  background: #343a40;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.dark-toggle:hover {
+  background: #495057;
+}
+
+/* ✅ Flash Messages */
+.success {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 12px;
+  border-left: 4px solid #28a745;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 12px;
+  border-left: 4px solid #dc3545;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+/* ✅ Dark Mode Overrides */
+.dark-mode {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+.dark-mode section,
+.dark-mode .content,
+.dark-mode li {
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+  border-color: #444;
+}
+
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+  background-color: #333;
+  color: #eee;
+  border-color: #555;
+}
+
+.dark-mode button {
+  background-color: #0056b3;
+}
+
+.dark-mode button:hover {
+  background-color: #004494;
+}
+
+.dark-mode .logout-button {
+  background-color: #bb2d3b;
+}
+
+.dark-mode .logout-button:hover {
+  background-color: #a71d2a;
+}
+
+.dark-mode .success {
+  background-color: #1e4620;
+  color: #a1f7b2;
+  border-left-color: #28a745;
+}
+
+.dark-mode .error {
+  background-color: #4a1c1c;
+  color: #f8b8b8;
+  border-left-color: #dc3545;
+}
+/* 🌟 Toast Notifications */
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.success, .error {
+  padding: 12px 20px;
   border-radius: 6px;
   font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s ease;
+  margin-bottom: 10px;
+  color: white;
+  animation: fadeOut 4s ease forwards;
 }
 
-.hero-text button:hover {
-  background-color: #e0a800;
+.success {
+  background-color: #28a745;
 }
 
+.error {
+  background-color: #dc3545;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; display: none; }
+}
+/* 📱 Responsive Layout */
+@media (max-width: 768px) {
+  body {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+
+  .hero-text {
+    padding: 0;
+  }
+
+  form, input, textarea, button {
+    width: 100% !important;
+  }
+
+  ul {
+    padding-left: 0;
+  }
+
+  li {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+}
