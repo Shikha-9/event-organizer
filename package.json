@@ -1,17 +1,19 @@
 {
   "name": "event-organizer",
   "version": "1.0.0",
+  "description": "A full-stack event organizer web app with authentication, dark mode, and category filtering.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Shikha",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "bcrypt": "^6.0.0",
     "express": "^5.1.0",
-    "express-session": "^1.18.1"
+    "express-session": "^1.18.1",
+    "sqlite3": "^5.1.6"
   }
 }
+
