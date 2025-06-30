@@ -1,18 +1,54 @@
-# Event Organizer Website
+# 🎯 Event Organizer - Plan, Promote & Party!
 
-## 💡 How to Run
+A fully functional and beautifully designed web application to create, manage, and search for events — built with **Node.js**, **Express**, **SQLite**, and enhanced UI using HTML/CSS.
 
-1. Clone this repo
-2. Run `npm install`
-3. Run `node server.js`
-4. Open `http://localhost:3000`
+![Banner](public/hero.jpg)
 
-## ✨ Future Scope
+## 🚀 Features
 
-- Categories (Workshops, Webinars, etc.)
-- Flash messages for user feedback
-- Deployed live version on Render
+- ✅ User Registration & Secure Login (bcrypt)
+- ✅ Flash messages (login success, errors, etc.)
+- ✅ Add, Edit, and Delete Events
+- ✅ Filter by Category and Search by Title
+- ✅ "My Events" Filter (only your created events)
+- ✅ Dark Mode Toggle 🌙 / ☀️
+- ✅ Fully Responsive Design
+- ✅ Clean UX with Toast Alerts
+- ✅ Authentication & Authorization protected routes
 
 ---
 
-Made by [Shikha](https://github.com/Shikha-9)
+## 🧠 Tech Stack
+
+| Frontend     | Backend     | Database |
+|--------------|-------------|----------|
+| HTML5 + CSS3 | Express.js  | SQLite3  |
+| JavaScript   | Node.js     |          |
+
+---
+
+## 🛠️ Installation
+
+```bash
+git clone https://github.com/Shikha-9/event-organizer.git
+cd event-organizer
+npm install
+Then run:
+node server.js
+
+🔐Admin Credentials
+You can register your own user. One default admin (created initially):
+Username: admin
+Password: admin123
+
+🌐 Live Demo
+👉 Hosted on Render:https://event-organizer-dlvt.onrender.com/
+
+🧠 Learning & Takeaways
+->This project helped reinforce:
+->CRUD Operations using SQLite
+->Secure login systems with session management
+->Express routing + views integration
+->UI/UX polish for real-world use
+->Hosting full-stack apps online!
+
